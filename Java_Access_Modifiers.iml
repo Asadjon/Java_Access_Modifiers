@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/xusanjonov_a/Downloads/jackson-all-1.9.0.jar/jackson-all-1.9.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/Library/jackson-all-1.9.0.jar/jackson-all-1.9.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,18 +19,18 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/xusanjonov_a/Downloads/java-json.jar/java-json.jar!/" />
+          <root url="jar://$MODULE_DIR$/Library/java-json.jar/java-json.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://D:/xusanjonov_a/Downloads/java-json.jar/java-json.jar!/" />
+          <root url="jar://$MODULE_DIR$/Library/java-json.jar/java-json.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/xusanjonov_a/Downloads/json-simple-1.1.jar/json-simple-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/Library/json-simple-1.1.jar/json-simple-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

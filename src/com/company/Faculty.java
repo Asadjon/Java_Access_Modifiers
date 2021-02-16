@@ -106,7 +106,38 @@ public class Faculty implements Shower, Action {
 
     @Override
     public void Update() {
+        int updateId;
+        do {
+            System.out.print("Enter the University ID to be update: ");
+            updateId = (int) InputClass.input(InputClass.TypeVariable.Int);
+            if (updateId < mGroups.size()+1 && updateId > 0){
+                break;
+            }
+            System.out.println("This id was not found");
+        }while (true);
 
+        Action forUpdate = mGroups.get(updateId-1);
+        forUpdate.UpdateTheChildren();
+    }
+
+    @Override
+    public void UpdateTheChildren() {
+        System.out.println("Now name of Faculty: " + mFacultyName);
+        System.out.print("Enter new Faculty name: ");
+        mFacultyName = (String) InputClass.input(InputClass.TypeVariable.String);
+
+        System.out.println("Now rating of Faculty: " + mFacultyRating);
+        System.out.print("Enter new University rating: ");
+        mFacultyRating = (int) InputClass.input(InputClass.TypeVariable.Int);
+
+        System.out.print("Do you want to change Groups as well? (1-yes, 0-no): ");
+        boolean groupChanging = (boolean) InputClass.input(InputClass.TypeVariable.Bool);
+
+        if (groupChanging) {
+            mGroups.forEach(group -> {
+                group.UpdateTheChildren();
+            });
+        }
     }
 
     @Override

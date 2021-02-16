@@ -107,7 +107,38 @@ public class University implements Shower, Action {
 
     @Override
     public void Update() {
+        int updateId;
+        do {
+            System.out.print("Enter the Faculty ID to be update: ");
+            updateId = (int) InputClass.input(TypeVariable.Int);
+            if (updateId < mFaculties.size()+1 && updateId > 0){
+                break;
+            }
+            System.out.println("This id was not found");
+        }while (true);
 
+        Action forUpdate = mFaculties.get(updateId-1);
+        forUpdate.UpdateTheChildren();
+    }
+
+    @Override
+    public void UpdateTheChildren() {
+        System.out.println("Now name of University: " + mUniversityName);
+        System.out.print("Enter new University name: ");
+        mUniversityName = (String) InputClass.input(TypeVariable.String);
+
+        System.out.println("Now rating of University: " + mUniversityRating);
+        System.out.print("Enter new University rating: ");
+        mUniversityRating = (int) InputClass.input(TypeVariable.Int);
+
+        System.out.print("Do you want to change Faculties as well? (1-yes, 0-no): ");
+        boolean facultyChanging = (boolean) InputClass.input(TypeVariable.Bool);
+
+        if (facultyChanging) {
+            mFaculties.forEach(faculty -> {
+                faculty.UpdateTheChildren();
+            });
+        }
     }
 
     @Override
@@ -126,5 +157,9 @@ public class University implements Shower, Action {
         faculty.show(id);
         Commands<Faculty> commands = new Commands<>();
         commands.commandLine(faculty, id);
+    }
+
+    private void UpdateChildren(){
+
     }
 }

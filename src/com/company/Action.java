@@ -7,5 +7,7 @@ public interface Action {
 
     void Update();
 
+    void UpdateTheChildren();
+
     void Search();
 }

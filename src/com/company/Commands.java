@@ -12,12 +12,12 @@ class Commands<T> {
         do {
             String textCmd =
                     "Insert command id: " + "\n" +
-                            "1) Add new " + shower.getClassName() + "\n" +
-                            "2) Delete " + shower.getClassName() + "\n" +
-                            "3) Update " + shower.getClassName() + "\n" +
-                            "4) Search " + shower.getClassName() + "\n" +
-                            "5) Show " + shower.getClassName() + " Data List\n" +
-                            "6) Exit the "+ shower.getClassName() +" Data List " + shower.getClassName();
+                    "                   1) Add new " + shower.getClassName() + "\n" +
+                    "                   2) Delete " + shower.getClassName() + "\n" +
+                    "                   3) Update " + shower.getClassName() + "\n" +
+                    "                   4) Search " + shower.getClassName() + "\n" +
+                    "                   5) Show " + shower.getClassName() + " Data List\n" +
+                    "                   6) Exit the "+ shower.getClassName() +" Data List ";
             System.out.println(textCmd);
             System.out.print("Enter Id: ");
 

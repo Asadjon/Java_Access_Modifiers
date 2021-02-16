@@ -77,8 +77,22 @@ public class Database implements Shower, Action{
 
     @Override
     public void Update() {
+        int updateId;
+        do {
+            System.out.print("Enter the University ID to be update: ");
+            updateId = (int) InputClass.input(TypeVariable.Int);
+            if (updateId < mUniversities.size()+1 && updateId > 0){
+                break;
+            }
+            System.out.println("This id was not found");
+        }while (true);
 
+        Action forUpdate = mUniversities.get(updateId-1);
+        forUpdate.UpdateTheChildren();
     }
+
+    @Override
+    public void UpdateTheChildren() {}
 
     @Override
     public void Search() {
