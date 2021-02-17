@@ -49,7 +49,7 @@ public class Group implements Shower, Action {
     @Override
     public void show(int id) {
         String builder =
-                "\t\tGroup: " + id +
+                "|\t|\tGroup: " + id +
                 ",\tGroup name: " + mGroupName +
                 ", Group rating: " + mGroupRating;
 

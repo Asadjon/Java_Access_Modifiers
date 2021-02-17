@@ -99,7 +99,7 @@ public class Student implements Shower{
     public void show(int id) {
 
         String builder =
-                "\t\t\tStudent: " + id +
+                "|\t|\t|\tStudent: " + id +
                 ",\tName: " + getName() +
                 ", Family: " + getFamily() +
                 ", Last name: " + getLastName() +

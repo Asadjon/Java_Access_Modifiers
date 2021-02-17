@@ -47,7 +47,7 @@ public class Faculty implements Shower, Action {
     @Override
     public void show(int id) {
         String builder =
-                "\tFaculty: " + id +
+                "|\tFaculty: " + id +
                 ",\tFaculty name: " + mFacultyName +
                 ", Faculty rating: " + mFacultyRating;
 

@@ -18,7 +18,7 @@ class JsonController {
     static JsonController initJsonController(){ return jsonController != null ? jsonController : (jsonController = new JsonController()); }
 
     private JsonController() {
-        jsonFile = new File("D:\\database.json");
+        jsonFile = new File("database.json");
         try {
             if (jsonFile.createNewFile()){
                 System.out.println("Json file created");
@@ -30,7 +30,7 @@ class JsonController {
         }
     }
 
-    public JsonController setUniversities(List<University> universities){
+    void setUniversities(List<University> universities){
         JSONArray jsonUniversities = new JSONArray();
         universities.forEach(university -> {
             JSONArray jsonFaculties = new JSONArray();
@@ -85,10 +85,9 @@ class JsonController {
             e.printStackTrace();
         }
 
-        return this;
     }
 
-    public List<University> getUniversities(){
+    List<University> getUniversities(){
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject;
         try {
