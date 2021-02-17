@@ -14,13 +14,8 @@ public class University extends MainClass{
     }
 
     @Override
-    String getThisClassName() {
-        return "University";
-    }
-
-    @Override
     public String getChildrenClassName() {
-        return "Faculty";
+        return new Faculty().toString();
     }
 
     @Override
@@ -41,6 +36,11 @@ public class University extends MainClass{
         newFaculty.Add();
 
         return newFaculty;
+    }
+
+    @Override
+    public String toString() {
+        return "University";
     }
 
 }

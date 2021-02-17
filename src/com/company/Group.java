@@ -15,13 +15,8 @@ class Group extends MainClass{
     }
 
     @Override
-    String getThisClassName() {
-        return "Group";
-    }
-
-    @Override
     public String getChildrenClassName() {
-        return "Student";
+        return new Student().toString();
     }
 
     @Override
@@ -59,5 +54,10 @@ class Group extends MainClass{
         System.out.println();
 
         return newStudent;
+    }
+
+    @Override
+    public String toString() {
+        return "Group";
     }
 }

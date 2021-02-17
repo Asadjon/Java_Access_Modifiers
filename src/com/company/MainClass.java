@@ -11,7 +11,7 @@ public abstract class MainClass <T> implements Shower, Action{
 
     private List<T> mObjects;
 
-    protected String tab;
+    String tab = "";
 
     MainClass(String mName, int mRating, List<T> mObjects) {
         this();
@@ -52,8 +52,6 @@ public abstract class MainClass <T> implements Shower, Action{
         this.mObjects = mObjects;
     }
 
-    abstract String getThisClassName();
-
     abstract int getTabCount();
 
     abstract T createNewObject();
@@ -87,7 +85,7 @@ public abstract class MainClass <T> implements Shower, Action{
         }while (true);
 
         mObjects.remove(deletedId);
-        System.out.println(getThisClassName() + " data has been deleted");
+        System.out.println(toString() + " data has been deleted");
     }
 
     @Override
@@ -109,12 +107,12 @@ public abstract class MainClass <T> implements Shower, Action{
 
     @Override
     public void UpdateTheChildren() {
-        System.out.println("Now name of " + getThisClassName() + ": " + mName);
-        System.out.print("Enter new " + getThisClassName() + " name: ");
+        System.out.println("Now name of " + toString() + ": " + mName);
+        System.out.print("Enter new " + toString() + " name: ");
         mName = (String) InputClass.input(InputClass.TypeVariable.String);
 
-        System.out.println("Now rating of " + getThisClassName() + ": " + mRating);
-        System.out.print("Enter new " + getThisClassName() + " rating: ");
+        System.out.println("Now rating of " + toString() + ": " + mRating);
+        System.out.print("Enter new " + toString() + " rating: ");
         mRating = (int) InputClass.input(InputClass.TypeVariable.Int);
 
         System.out.print("Do you want to change " + getChildrenClassName() + " as well? (1-yes, 0-no): ");
@@ -153,7 +151,10 @@ public abstract class MainClass <T> implements Shower, Action{
         for (int i = 0; i < getTabCount(); i++) {
             tab.append("|\t");
         }
-        tab.append(getThisClassName()).append(": ").append(id).append(",\t").append(getThisClassName()).append(" name: ").append(mName).append(", ").append(getThisClassName()).append(" rating: ").append(mRating);
+        tab.append(toString()).append(": ").append(id).append(",\t").
+                append(toString()).append(" name: ").append(mName).append(", ").
+                append(toString()).append(" rating: ").append(mRating).append(", ").
+                append(getChildrenClassName()).append(" data list size: ").append(mObjects.size());
 
         System.out.println(tab);
 

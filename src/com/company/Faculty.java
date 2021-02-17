@@ -14,13 +14,8 @@ public class Faculty extends MainClass{
     }
 
     @Override
-    String getThisClassName() {
-        return "Faculty";
-    }
-
-    @Override
     public String getChildrenClassName() {
-        return "Group";
+        return new Group().toString();
     }
 
     @Override
@@ -41,5 +36,10 @@ public class Faculty extends MainClass{
         newGroup.Add();
 
         return newGroup;
+    }
+
+    @Override
+    public String toString() {
+        return "Faculty";
     }
 }

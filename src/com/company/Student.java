@@ -151,4 +151,9 @@ public class Student implements Shower{
         System.out.print("Enter new Student scholarship: ");
         mScholarship = (double) InputClass.input(InputClass.TypeVariable.Double);
     }
+
+    @Override
+    public String toString() {
+        return "Student";
+    }
 }

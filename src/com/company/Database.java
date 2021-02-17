@@ -26,13 +26,8 @@ public class Database extends MainClass{
     }
 
     @Override
-    String getThisClassName() {
-        return "Database";
-    }
-
-    @Override
     public String getChildrenClassName() {
-        return "University";
+        return new University().toString();
     }
 
     @Override
