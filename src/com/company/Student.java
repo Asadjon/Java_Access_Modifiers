@@ -99,7 +99,7 @@ public class Student implements Shower{
     public void show(int id) {
 
         String builder =
-                "|\t|\t|\tStudent: " + id +
+                "|\t|\t|\t Student: " + id +
                 ",\tName: " + getName() +
                 ", Family: " + getFamily() +
                 ", Last name: " + getLastName() +
@@ -112,11 +112,12 @@ public class Student implements Shower{
     }
 
     @Override
-    public String getClassName() {
+    public String getChildrenClassName() {
         return "";
     }
 
-    void UpdateTheChildren() {
+    @Override
+    public void UpdateTheChildren() {
 
         System.out.println("Now name of Student: " + mName);
         System.out.print("Enter new Student name: ");

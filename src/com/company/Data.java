@@ -1,33 +1,21 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import com.company.InputClass.TypeVariable;
 
-public class Database extends MainClass{
+public class Data extends MainClass {
 
-    private static Database mDatabase;
-
-    static Database initDatabase(){
-        return mDatabase != null ? mDatabase : (mDatabase = new Database());
+    Data(String mName, int mRating, List<Object> mObjects) {
+        super(mName, mRating, mObjects);
     }
 
-    private Database() {
-        setObjects(JsonController.initJsonController().getUniversities());
-        this.setObjects(getObjects() != null ? getObjects() : new ArrayList<>());
-    }
-
-    @Override
-    public void show(int id) {
-        for (int i = 0; i < getObjects().size(); i++) {
-            ((Shower) getObjects().get(i)).show(i+1);
-        }
+    Data() {
+        super();
     }
 
     @Override
     String getThisClassName() {
-        return "Database";
+        return "Data";
     }
 
     @Override
