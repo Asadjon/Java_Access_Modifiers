@@ -26,7 +26,8 @@ public abstract class MainClass <T> implements Shower, Action{
         StringBuilder tab = new StringBuilder();
         for (int j = 0; j < getTabCount(); j++) {
             tab.append("\t");
-        }}
+        }
+    }
 
     String getName() {
         return mName;
@@ -138,10 +139,10 @@ public abstract class MainClass <T> implements Shower, Action{
             System.out.println("This id was not found");
         }while (true);
 
-        Object object = mObjects.get(searchId);
+        T object = mObjects.get(searchId);
         ((Shower)object).show(searchId+1);
 
-        Commands<Object> commands = new Commands<>();
+        Commands<T> commands = new Commands();
         commands.commandLine(object, searchId);
     }
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import com.company.InputClass.TypeVariable;
 
-public class Database extends MainClass{
+public class Database extends MainClass<University>{
 
     private static Database mDatabase;
 
@@ -36,7 +36,7 @@ public class Database extends MainClass{
     }
 
     @Override
-    Object createNewObject() {
+    University createNewObject() {
         University newUniversity = new University();
 
         System.out.print(tab + getChildrenClassName() + " name: ");

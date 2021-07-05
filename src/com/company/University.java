@@ -3,9 +3,9 @@ package com.company;
 import java.util.List;
 import java.util.Objects;
 
-public class University extends MainClass{
+public class University extends MainClass<Faculty>{
 
-    University(String mName, int mRating, List<Object> mObjects) {
+    University(String mName, int mRating, List<Faculty> mObjects) {
         super(mName, mRating, mObjects);
     }
 
@@ -24,7 +24,7 @@ public class University extends MainClass{
     }
 
     @Override
-    Object createNewObject() {
+    Faculty createNewObject() {
         Faculty newFaculty = new Faculty();
 
         System.out.print(tab + getChildrenClassName() + " name: ");

@@ -20,54 +20,51 @@ class JsonController {
     private JsonController() {
         jsonFile = new File("database.json");
         try {
-            if (jsonFile.createNewFile()){
-                System.out.println("Json file created");
-            } else {
-                System.out.println("Json file not created");
-            }
+            if (jsonFile.createNewFile()) System.out.println("Json file created");
+             else System.out.println("Json file not created");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    void setUniversities(List<Object> universities){
+    void setUniversities(List<University> universities){
         JSONArray jsonUniversities = new JSONArray();
         universities.forEach(university -> {
             JSONArray jsonFaculties = new JSONArray();
-            ((University)university).getObjects().forEach(faculty -> {
+            university.getObjects().forEach(faculty -> {
                 JSONArray jsonGroups = new JSONArray();
-                ((Faculty)faculty).getObjects().forEach(group -> {
+                faculty.getObjects().forEach(group -> {
                     JSONArray jsonStudents = new JSONArray();
-                    ((Group)group).getObjects().forEach(student -> {
+                    group.getObjects().forEach(student -> {
                         JSONObject jsonStudent = new JSONObject();
-                        jsonStudent.put("name", ((Student)student).getName());
-                        jsonStudent.put("family", ((Student)student).getFamily());
-                        jsonStudent.put("lastName", ((Student)student).getLastName());
-                        jsonStudent.put("birthday", ((Student)student).getBirthday());
-                        jsonStudent.put("age", ((Student)student).getAge());
-                        jsonStudent.put("weight", ((Student)student).getWeight());
-                        jsonStudent.put("height", ((Student)student).getHeight());
-                        jsonStudent.put("scholarship", ((Student)student).getScholarship());
+                        jsonStudent.put("name", student.getName());
+                        jsonStudent.put("family", student.getFamily());
+                        jsonStudent.put("lastName", student.getLastName());
+                        jsonStudent.put("birthday", student.getBirthday());
+                        jsonStudent.put("age", student.getAge());
+                        jsonStudent.put("weight", student.getWeight());
+                        jsonStudent.put("height", student.getHeight());
+                        jsonStudent.put("scholarship", student.getScholarship());
                         jsonStudents.add(jsonStudent);
                     });
 
                     JSONObject jsonGroup = new JSONObject();
-                    jsonGroup.put("groupName", ((Group)group).getName());
-                    jsonGroup.put("groupRating", ((Group)group).getRating());
+                    jsonGroup.put("groupName", group.getName());
+                    jsonGroup.put("groupRating", group.getRating());
                     jsonGroup.put("students", jsonStudents);
                     jsonGroups.add(jsonGroup);
                 });
 
                 JSONObject jsonFaculty = new JSONObject();
-                jsonFaculty.put("facultyName", ((Faculty)faculty).getName());
-                jsonFaculty.put("facultyRating", ((Faculty)faculty).getRating());
+                jsonFaculty.put("facultyName", faculty.getName());
+                jsonFaculty.put("facultyRating", faculty.getRating());
                 jsonFaculty.put("groups", jsonGroups);
                 jsonFaculties.add(jsonFaculty);
             });
 
             JSONObject jsonUniversity = new JSONObject();
-            jsonUniversity.put("universityName", ((University)university).getName());
-            jsonUniversity.put("universityRating", ((University)university).getRating());
+            jsonUniversity.put("universityName", university.getName());
+            jsonUniversity.put("universityRating", university.getRating());
             jsonUniversity.put("faculties", jsonFaculties);
             jsonUniversities.add(jsonUniversity);
         });
@@ -102,15 +99,15 @@ class JsonController {
 
         jsonUniversities.forEach(JSON_UNIVERSITY -> {
             JSONObject jsonUniversity = (JSONObject) JSON_UNIVERSITY;
-            List<Object> faculties = new ArrayList<>();
+            List<Faculty> faculties = new ArrayList<>();
 
             ((JSONArray) jsonUniversity.get("faculties")).forEach(JSON_FACULTY -> {
                 JSONObject jsonFaculty = (JSONObject) JSON_FACULTY;
-                List<Object> groups = new ArrayList<>();
+                List<Group> groups = new ArrayList<>();
 
                 ((JSONArray) jsonFaculty.get("groups")).forEach(JSON_GROUP -> {
                     JSONObject jsonGroup = (JSONObject) JSON_GROUP;
-                    List<Object> students = new ArrayList<>();
+                    List<Student> students = new ArrayList<>();
 
                     ((JSONArray) jsonGroup.get("students")).forEach(JSON_STUDENT -> {
                         JSONObject jsonStudent = (JSONObject) JSON_STUDENT;

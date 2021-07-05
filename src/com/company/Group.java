@@ -4,9 +4,9 @@ package com.company;
 import java.util.List;
 import java.util.Objects;
 
-class Group extends MainClass{
+class Group extends MainClass<Student>{
 
-    Group(String mName, int mRating, List<Object> mObjects) {
+    Group(String mName, int mRating, List<Student> mObjects) {
         super(mName, mRating, mObjects);
     }
 
@@ -25,7 +25,7 @@ class Group extends MainClass{
     }
 
     @Override
-    Object createNewObject() {
+    Student createNewObject() {
         Student newStudent = new Student();
 
         System.out.print("\t\t\t       Name: ");
