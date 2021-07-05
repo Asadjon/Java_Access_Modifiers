@@ -1,9 +1,8 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import com.company.InputClass.TypeVariable;
+
+import static com.company.InputClass.input;
 
 public class Database extends MainClass<University>{
 
@@ -26,9 +25,12 @@ public class Database extends MainClass<University>{
     }
 
     @Override
-    public String getChildrenClassName() {
-        return new University().toString();
+    public String getChildrenTypeName() {
+        return "University";
     }
+
+    @Override
+    public String getTypeName() { return "Database"; }
 
     @Override
     int getTabCount() {
@@ -39,11 +41,11 @@ public class Database extends MainClass<University>{
     University createNewObject() {
         University newUniversity = new University();
 
-        System.out.print(tab + getChildrenClassName() + " name: ");
-        newUniversity.setName(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        System.out.print(tab + getChildrenTypeName() + " name: ");
+        newUniversity.setName(input(String.class));
 
-        System.out.print(tab + getChildrenClassName() + " rating: ");
-        newUniversity.setRating((Integer) InputClass.input(InputClass.TypeVariable.Int));
+        System.out.print(tab + getChildrenTypeName() + " rating: ");
+        newUniversity.setRating(input(Integer.class));
 
         newUniversity.Add();
 

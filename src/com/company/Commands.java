@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.InputClass.TypeVariable;
+import static com.company.InputClass.input;
 
 class Commands<T> {
 
@@ -13,16 +13,16 @@ class Commands<T> {
         do {
             String textCmd =
                     "Insert command id: " + "\n" +
-                    "                   1) Add new " + shower.getChildrenClassName() + "\n" +
-                    "                   2) Delete " + shower.getChildrenClassName() + "\n" +
-                    "                   3) Update " + shower.getChildrenClassName() + "\n" +
-                    "                   4) Search " + shower.getChildrenClassName() + "\n" +
-                    "                   5) Show " + shower.getChildrenClassName() + " Data List\n" +
-                    "                   6) Exit the "+ shower.getChildrenClassName() +" Data List ";
+                    "                   1) Add new " + shower.getChildrenTypeName() + "\n" +
+                    "                   2) Delete " + shower.getChildrenTypeName() + "\n" +
+                    "                   3) Update " + shower.getChildrenTypeName() + "\n" +
+                    "                   4) Search " + shower.getChildrenTypeName() + "\n" +
+                    "                   5) Show " + shower.getChildrenTypeName() + " Data List\n" +
+                    "                   6) Exit the "+ shower.getChildrenTypeName() +" Data List ";
             System.out.println(textCmd);
             System.out.print("Enter Id: ");
 
-            int command = (int) InputClass.input(TypeVariable.Int);
+            int command = input(Integer.class);
 
             switch (command){
                 case 1:

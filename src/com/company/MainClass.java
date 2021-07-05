@@ -3,6 +3,8 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.company.InputClass.input;
+
 public abstract class MainClass <T> implements Shower, Action{
 
     private String mName;
@@ -59,12 +61,12 @@ public abstract class MainClass <T> implements Shower, Action{
 
     @Override
     public void Add() {
-        System.out.print(tab + "Insert " + getChildrenClassName() + " number: ");
-        int studentsSize = (int) InputClass.input(InputClass.TypeVariable.Int);
+        System.out.print(tab + "Insert " + getChildrenTypeName() + " number: ");
+        int studentsSize = input(Integer.class);
 
         for (int i = 0; i < studentsSize; i++) {
 
-            System.out.println(tab + getChildrenClassName() + ": " + (i+1));
+            System.out.println(tab + getChildrenTypeName() + ": " + (i+1));
 
             T newObject = createNewObject();
 
@@ -76,8 +78,8 @@ public abstract class MainClass <T> implements Shower, Action{
     public void Delete() {
         int deletedId;
         do {
-            System.out.print("Enter the " + getChildrenClassName() + " ID to be deleted: ");
-            deletedId = (int) InputClass.input(InputClass.TypeVariable.Int);
+            System.out.print("Enter the " + getChildrenTypeName() + " ID to be deleted: ");
+            deletedId = input(Integer.class);
             if (deletedId < mObjects.size()+1 && deletedId > 0){
                 deletedId--;
                 break;
@@ -93,8 +95,8 @@ public abstract class MainClass <T> implements Shower, Action{
     public void Update() {
         int updateId;
         do {
-            System.out.print("Enter the " + getChildrenClassName() + " ID to be update: ");
-            updateId = (int) InputClass.input(InputClass.TypeVariable.Int);
+            System.out.print("Enter the " + getChildrenTypeName() + " ID to be update: ");
+            updateId = input(Integer.class);
             if (updateId < mObjects.size()+1 && updateId > 0){
                 updateId--;
                 break;
@@ -110,14 +112,14 @@ public abstract class MainClass <T> implements Shower, Action{
     public void UpdateTheChildren() {
         System.out.println("Now name of " + toString() + ": " + mName);
         System.out.print("Enter new " + toString() + " name: ");
-        mName = (String) InputClass.input(InputClass.TypeVariable.String);
+        mName = input(String.class);
 
         System.out.println("Now rating of " + toString() + ": " + mRating);
         System.out.print("Enter new " + toString() + " rating: ");
-        mRating = (int) InputClass.input(InputClass.TypeVariable.Int);
+        mRating = input(Integer.class);
 
-        System.out.print("Do you want to change " + getChildrenClassName() + " as well? (1-yes, 0-no): ");
-        boolean groupChanging = (boolean) InputClass.input(InputClass.TypeVariable.Bool);
+        System.out.print("Do you want to change " + getChildrenTypeName() + " as well? (1-yes, 0-no): ");
+        boolean groupChanging = input(Boolean.class);
 
         if (groupChanging) {
             mObjects.forEach(object -> {
@@ -130,8 +132,8 @@ public abstract class MainClass <T> implements Shower, Action{
     public void Search() {
         int searchId;
         do {
-            System.out.print("Enter the " + getChildrenClassName() + " id: ");
-            searchId = (int) InputClass.input(InputClass.TypeVariable.Int);
+            System.out.print("Enter the " + getChildrenTypeName() + " id: ");
+            searchId = input(Integer.class);
             if (searchId < mObjects.size()+1 && searchId > 0){
                 searchId--;
                 break;
@@ -149,13 +151,9 @@ public abstract class MainClass <T> implements Shower, Action{
     @Override
     public void show(int id) {
         StringBuilder tab = new StringBuilder();
-        for (int i = 0; i < getTabCount(); i++) {
-            tab.append("|\t");
-        }
-        tab.append(toString()).append(": ").append(id).append(",\t").
-                append(toString()).append(" name: ").append(mName).append(", ").
-                append(toString()).append(" rating: ").append(mRating).append(", ").
-                append(getChildrenClassName()).append(" data list size: ").append(mObjects.size());
+        for (int i = 0; i < getTabCount(); i++) tab.append("|\t");
+
+        tab.append(getTypeName()).append(": ").append(id).append(",\t").append(toString());
 
         System.out.println(tab);
 
@@ -169,7 +167,9 @@ public abstract class MainClass <T> implements Shower, Action{
     }
 
     @Override
-    public String getChildrenClassName() {
-        return "MainClass";
+    public String toString() {
+        return getTypeName() + " name: " + mName + ", " +
+                getTypeName() + " rating: " + mRating + ", " +
+                getChildrenTypeName() + " data list size: " + mObjects.size();
     }
 }

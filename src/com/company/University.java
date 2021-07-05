@@ -1,7 +1,8 @@
 package com.company;
 
 import java.util.List;
-import java.util.Objects;
+
+import static com.company.InputClass.input;
 
 public class University extends MainClass<Faculty>{
 
@@ -14,8 +15,13 @@ public class University extends MainClass<Faculty>{
     }
 
     @Override
-    public String getChildrenClassName() {
-        return new Faculty().toString();
+    public String getChildrenTypeName() {
+        return "Faculty";
+    }
+
+    @Override
+    public String getTypeName() {
+        return "University";
     }
 
     @Override
@@ -27,20 +33,14 @@ public class University extends MainClass<Faculty>{
     Faculty createNewObject() {
         Faculty newFaculty = new Faculty();
 
-        System.out.print(tab + getChildrenClassName() + " name: ");
-        newFaculty.setName(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        System.out.print(tab + getChildrenTypeName() + " name: ");
+        newFaculty.setName(input(String.class));
 
-        System.out.print(tab + getChildrenClassName() + " rating: ");
-        newFaculty.setRating((int) InputClass.input(InputClass.TypeVariable.Int));
+        System.out.print(tab + getChildrenTypeName() + " rating: ");
+        newFaculty.setRating(input(Integer.class));
 
         newFaculty.Add();
 
         return newFaculty;
     }
-
-    @Override
-    public String toString() {
-        return "University";
-    }
-
 }

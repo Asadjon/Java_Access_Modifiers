@@ -4,6 +4,8 @@ package com.company;
 import java.util.List;
 import java.util.Objects;
 
+import static com.company.InputClass.input;
+
 class Group extends MainClass<Student>{
 
     Group(String mName, int mRating, List<Student> mObjects) {
@@ -15,8 +17,13 @@ class Group extends MainClass<Student>{
     }
 
     @Override
-    public String getChildrenClassName() {
-        return new Student().toString();
+    public String getChildrenTypeName() {
+        return "Student";
+    }
+
+    @Override
+    public String getTypeName() {
+        return "Group";
     }
 
     @Override
@@ -29,35 +36,30 @@ class Group extends MainClass<Student>{
         Student newStudent = new Student();
 
         System.out.print("\t\t\t       Name: ");
-        newStudent.setName(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        newStudent.setName(input(String.class));
 
         System.out.print("\t\t\t     Family: ");
-        newStudent.setFamily(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        newStudent.setFamily(input(String.class));
 
         System.out.print("\t\t\t  Last name: ");
-        newStudent.setLastName(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        newStudent.setLastName(input(String.class));
 
         System.out.print("\t\t\t   Birthday: ");
-        newStudent.setBirthday(Objects.requireNonNull(InputClass.input(InputClass.TypeVariable.String)).toString());
+        newStudent.setBirthday(input(String.class));
 
         System.out.print("\t\t\t        Age: ");
-        newStudent.setAge((int) InputClass.input(InputClass.TypeVariable.Int));
+        newStudent.setAge(input(Integer.class));
 
         System.out.print("\t\t\t     Height: ");
-        newStudent.setHeight((double) InputClass.input(InputClass.TypeVariable.Double));
+        newStudent.setHeight(input(Double.class));
 
         System.out.print("\t\t\t     Weight: ");
-        newStudent.setWeight((double) InputClass.input(InputClass.TypeVariable.Double));
+        newStudent.setWeight(input(Double.class));
 
         System.out.print("\t\t\tScholarship: ");
-        newStudent.setScholarship((double) InputClass.input(InputClass.TypeVariable.Double));
+        newStudent.setScholarship(input(Double.class));
         System.out.println();
 
         return newStudent;
-    }
-
-    @Override
-    public String toString() {
-        return "Group";
     }
 }
